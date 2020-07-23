@@ -129,21 +129,29 @@ class Lambdasian {
 
 /*
   TASK 4
-    - Write an Instructor class extending Lambdasian.
-    - Its constructor takes a single argument - an object with the following keys:
-        + All the keys used to initialize instances of Lambdasian.
-        + `specialty`: what the instance of Instructor is good at, i.e. 'redux'
-        + `favLanguage`: i.e. 'JavaScript, Python, Elm etc.'
-        + `catchPhrase`: i.e. `Don't forget the homies`.
-    - The constructor calls the parent constructor passing it what it needs.
-    - The constructor should also initialize `specialty`, `favLanguage` and `catchPhrase` properties on the instance.
-    - Instructor instances have the following methods:
-        + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
-        + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
+    -X Write an Instructor class extending Lambdasian.
+    -X Its constructor takes a single argument - an object with the following keys:
+        X + All the keys used to initialize instances of Lambdasian.
+        X + `specialty`: what the instance of Instructor is good at, i.e. 'redux'
+        X + `favLanguage`: i.e. 'JavaScript, Python, Elm etc.'
+        X + `catchPhrase`: i.e. `Don't forget the homies`.
+    - X The constructor calls the parent constructor passing it what it needs.
+    - X The constructor should also initialize `specialty`, `favLanguage` and `catchPhrase` properties on the instance.
+    -X  Instructor instances have the following methods:
+        +X  `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
+        +X  `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian{
-  constructor(attr){
-
+  constructor(attributes){
+    this.specialty = attributes.specialty;
+    this.favLanguage = attributes.favLanguage;
+    this.catchPhrase = attributes.catchPhrase
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`
+  }
+  grade(student, string){
+    return `${student.name} recieives a perfect score on ${string}`
   }
 }
 
@@ -162,8 +170,10 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Lambdasian {
+  constructor(attributes){
 
+  }
 }
 
 /*
