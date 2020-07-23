@@ -143,6 +143,7 @@ class Lambdasian {
 */
 class Instructor extends Lambdasian{
   constructor(attributes){
+    super(attributes);
     this.specialty = attributes.specialty;
     this.favLanguage = attributes.favLanguage;
     this.catchPhrase = attributes.catchPhrase
@@ -157,40 +158,62 @@ class Instructor extends Lambdasian{
 
 /*
   TASK 5
-    - Write a Student class extending Lambdasian.
-    - Its constructor takes a single argument -  an object with the following keys:
-        + All the keys used to initialize instances of Lambdasian.
-        + `previousBackground` i.e. what the Student used to do before Lambda School
-        + `className` i.e. CS132
-        + `favSubjects`. i.e. an array of the student's favorite subjects ['HTML', 'CSS', 'JS']
-    - The constructor calls the parent constructor passing to it what it needs.
-    - The constructor should also initialize `previousBackground`, `className` and `favSubjects` properties on the instance.
-    - Student instances have the following methods:
-        + `listSubjects` a method that returns all of the student's favSubjects in a single string: `Loving HTML, CSS, JS!`.
-        + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
-        + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
+    -X  Write a Student class extending Lambdasian.
+    -X  Its constructor takes a single argument -  an object with the following keys:
+      X  + All the keys used to initialize instances of Lambdasian.
+      X  + `previousBackground` i.e. what the Student used to do before Lambda School
+      X  + `className` i.e. CS132
+      X  + `favSubjects`. i.e. an array of the student's favorite subjects ['HTML', 'CSS', 'JS']
+    -X The constructor calls the parent constructor passing to it what it needs.
+    -X The constructor should also initialize `previousBackground`, `className` and `favSubjects` properties on the instance.
+    -X Student instances have the following methods:
+        +X `listSubjects` a method that returns all of the student's favSubjects in a single string: `Loving HTML, CSS, JS!`.
+        +X `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
+        +X `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian {
   constructor(attributes){
-
+    super(attributes);
+    this.previousBackground = attributes.previousBackground;
+    this.className = attributes.className;
+    this.favSubjects = attributes.favSubjects;
+  }
+  listSubjects(){
+    return `${this.favSubjects}`
+  }
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject){
+    return `${this.name} has begun spring challenge on ${subject}`;
   }
 }
 
 /*
   TASK 6
-    - Write a ProjectManager class extending Instructor.
-    - Its constructor takes a single argument - an object with the following keys:
-        + All the keys used to initialize instances of Instructor.
-        + `gradClassName`: i.e. CS1
-        + `favInstructor`: i.e. Sean
-    - Its constructor calls the parent constructor passing to it what it needs.
-    - The constructor should also initialize `gradClassName` and `favInstructor` properties on the instance.
-    - ProjectManager instances have the following methods:
-        + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
-        + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
+    -X Write a ProjectManager class extending Instructor.
+    -X Its constructor takes a single argument - an object with the following keys:
+        +X All the keys used to initialize instances of Instructor.
+        +X `gradClassName`: i.e. CS1
+        +X `favInstructor`: i.e. Sean
+    -X Its constructor calls the parent constructor passing to it what it needs.
+    -X The constructor should also initialize `gradClassName` and `favInstructor` properties on the instance.
+    -X ProjectManager instances have the following methods:
+      X  + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
+      X  + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor {
+  constructor(attributes){
+    super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
+  }
 }
 
 /*
