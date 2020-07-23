@@ -65,21 +65,43 @@ personOne.eat("Pizza");
 
 /*
   TASK 2
-    - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
-    - All instances built with Car:
+    -X Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
+    -X All instances built with Car:
         + should initialize with a `tank` at 0
         + should initialize with an `odometer` at 0
-    - Give cars the ability to get fueled with a `.fill(gallons)` method. Add the gallons to `tank`.
-    - Give cars ability to `.drive(distance)`. The distance driven:
-        + Should cause the `odometer` to go up.
-        + Should cause the the `tank` to go down taking `milesPerGallon` into account.
-    - A car which runs out of `fuel` while driving can't drive any more distance:
-        + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
+    -X Give cars the ability to get fueled with a `.fill(gallons)` method. Add the gallons to `tank`.
+    -X Give cars ability to `.drive(distance)`. The distance driven:
+       X + Should cause the `odometer` to go up.
+       X + Should cause the the `tank` to go down taking `milesPerGallon` into account.
+    - X A car which runs out of `fuel` while driving can't drive any more distance:
+        X + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
 class Car {
-  constructor(attributes)
-
+  constructor(model, milesPerGallon){ 
+    this.model = 'BatMobile';
+    this.milesPerGallon = 20;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    if (gallons > 0) {
+      this.tank = this.tank + gallons;
+    }
+  };
+  drive(distance) {
+    if (distance > 0) {
+      if (distance <= this.milesPerGallon * this.tank) {
+        this.odometer = distance + this.odometer;
+        this.tank = this.tank - distance / this.milesPerGallon;
+      }
+      else {
+        this.odometer = this.odometer + this.milesPerGallon * this.tank;
+        this.tank = 0;
+        return `I ran out of fuel at ${this.odometer} miles`
+      }
+    }
+  }
 }
 
 /*
@@ -95,7 +117,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attributes){
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, i'm from ${this.location}`
+  }
 }
 
 /*
@@ -112,8 +141,10 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian{
+  constructor(attr){
 
+  }
 }
 
 /*
